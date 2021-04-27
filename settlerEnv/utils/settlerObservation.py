@@ -1,5 +1,6 @@
 import settlerEnv
-from netVars import NetVars
+from utils.netVars import NetVars
+from utils.settler import Settler
 
 
 class SettlerObservation:
@@ -10,4 +11,8 @@ class SettlerObservation:
         net_vars = NetVars.instance()
         settler_offset = net_vars.settler_offset
         player_offset = net_vars.get_player_offset(player_position)
-        self.worker = settler_env.read_int(settler_offset, player_offset, 0x04 * 0)
+        self.settlers = [settler_env.read_int(settler_offset, player_offset, 0x04 * settler.value)
+                         for settler in Settler]
+
+    def get_settler(self, settler: Settler):
+        return self.settlers[settler.value]

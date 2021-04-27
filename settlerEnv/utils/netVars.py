@@ -1,9 +1,9 @@
-from singleton import Singleton
+from utils.singleton import Singleton
 
 
 @Singleton
 class NetVars:
-    resource_offset = 0xDAD97C
+    resource_offset = 0xDAD964
     settler_offset = 0xDACF60
     player_diff = 0x1128
     player_count = 0xE94828

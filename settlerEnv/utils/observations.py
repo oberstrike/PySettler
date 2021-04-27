@@ -1,8 +1,10 @@
-from netVars import NetVars
-from settlerObservation import SettlerObservation
-from resourceObservation import ResourceObservation
-from gameObservation import  GameObservation
+from utils.good import Good
+from utils.settler import Settler
+from utils.settlerObservation import SettlerObservation
+from utils.goodObservation import GoodObservation
+from utils.gameObservation import GameObservation
 import settlerEnv
+from utils.netVars import NetVars
 
 
 class Observations:
@@ -13,9 +15,13 @@ class Observations:
 
         self.settlerObservations = [SettlerObservation(settler_env, player + 1) for player
                                     in range(player_count)]
-        self.resourceObservations = [ResourceObservation(settler_env, player + 1) for player
-                                     in range(player_count)]
+        self.goodObservations = [GoodObservation(settler_env, player + 1) for player
+                                 in range(player_count)]
         self.gameObservations = GameObservation(settler_env)
+        swords = self.settlerObservations[0].get_settler(Settler.SWORDSMAN_03)
+        wood = self.goodObservations[0].get_good(Good.AXE)
+        print("Swords: %d" % swords )
+        print("Wood: %d" % wood)
         print(self.settlerObservations)
 
     def as_tuple(self):

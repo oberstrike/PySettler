@@ -1,5 +1,5 @@
 import settlerEnv
-from netVars import NetVars
+from utils.netVars import NetVars
 
 
 class GameObservation:
